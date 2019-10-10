@@ -398,7 +398,7 @@ import publicFunc from '../../../utils/public.js'
         this.getWechat({url:location.href.split('#')[0]}).then(resp => {
           var respData = resp.data
           wx.config({
-            debug: true,
+            debug: false,
             appId: respData.appid,
             timestamp: respData.time,
             nonceStr: respData.noncestr,

@@ -56,7 +56,7 @@ const queryOptionCode = (param) =>  axios.post('/enterprise_service/query_code_b
 const queryOptionCode_trace = (param) => axios.post('/enterprise_service/query_code_bind_deliver_take_list',JSON.stringify(param))
 const  cancel_bind = (param) => axios.post('/enterprise_service/unbind_product_code',JSON.stringify(param))
 const cancel_goods = (param) => axios.post('/enterprise_service/undeliver_product',JSON.stringify(param))
-const getWechat = (param) => axios.get(`http://www.315chain.com/apps/wap_afk/wechat_dev/wx.php?url=${param.url}`)
+const getWechat = (param) => axios.get(`//www.315chain.com/apps/wap_afk/wechat_dev/wx.php?url=${param.url}`)
 
 export {
   queryOptionCode_trace,

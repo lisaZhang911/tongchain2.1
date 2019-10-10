@@ -591,6 +591,7 @@ export default {
     next()
   },
   mounted() {
+    var htp = window.location.href.split('//')[0]
     this.path = this.$router.currentRoute.params.path
     this.$set(this,'spinShow',true)
     //获取溯源信息列表
@@ -603,7 +604,7 @@ export default {
 
     // 获取图片上传签名
     this.getUploadPic({}).then(resp => {
-      this.host=resp.data.host
+      this.host=`${htp}//${resp.data.host.split('//')[1]}`
       this.key=resp.data.dir
       this.multipart_params.policy=resp.data.policy
       this.multipart_params.OSSAccessKeyId=resp.data.accessid
