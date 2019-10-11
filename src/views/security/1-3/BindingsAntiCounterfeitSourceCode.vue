@@ -6,6 +6,7 @@
       <div class="code">
         <div class="subheading" :class="{mb40:$store.getters.isPC}">选择待绑码产品</div>
         <AutoComplete
+          id="autoCom"
           :data="prod_auto"
           :filter-method="filter_auto"
           @on-change="getProdId"
@@ -190,6 +191,7 @@ import publicFunc from '../../../utils/public.js'
         })
         if(re){
           this.bindParam.product_id = re.id
+          this.add()
         }
       },
       getDate(val,str){
@@ -240,6 +242,10 @@ import publicFunc from '../../../utils/public.js'
           this.$Message.warning('请输入正确数据')
           return
         }
+        // if(this.bindParam.product_id==undefined || code == ''){
+        //   this.$Message.warning('请输入正确数据')
+        //   return
+        // }
         //判断是否重复
         if(this.contrastCodeArr_big.indexOf(code)>-1&&code.length==14 || this.contrastCodeArr_sub.indexOf(code)>-1&&code.length==16){
           this.$Message.warning('此码已添加')
@@ -352,6 +358,9 @@ import publicFunc from '../../../utils/public.js'
 </script>
 
 <style scoped>
+#autoCom >>> .ivu-auto-complete.ivu-select-dropdown{
+  max-height: 200px
+}
   .mob_btn {
     margin-bottom: 20px;
   }

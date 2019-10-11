@@ -7,6 +7,7 @@
         <div class="subheading">选择代理商进行发货</div>
         <div class="tip" v-show="$store.getters.isPC">一次仅可选择一个代理商</div>
         <AutoComplete
+          id="autoCom"
           :data="agent_auto"
           :filter-method="filter_auto"
           @on-change="getAgentId"
@@ -319,6 +320,9 @@ import wx from 'weixin-jsapi'
 </script>
 
 <style scoped>
+#autoCom >>> .ivu-auto-complete.ivu-select-dropdown{
+  max-height: 200px
+}
 .mt10{
   margin-top: 9%
 }
