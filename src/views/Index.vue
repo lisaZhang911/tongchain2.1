@@ -65,7 +65,7 @@
               <MenuItem
                 v-show="user_type==4 || user_type==1 || user_type==3"
                 name="/security/1-3/product_collection">产品收货</MenuItem>
-              <MenuItem v-show="user_type==4||user_type==3" name="/security/1-3/binding_code_and_receipt_and_delivery_record_query">绑码 / 收货 / 发货记录</MenuItem>
+              <MenuItem v-show="user_type==4||user_type==1||user_type==3" name="/security/1-3/binding_code_and_receipt_and_delivery_record_query">绑码 / 收货 / 发货记录</MenuItem>
              <!-- <MenuItem v-show="user_type==4||user_type==3&&authory.indexOf(12)>-1" name="/security/1-3/binding_code_and_receipt_and_delivery_record_query">绑码 / 收货 / 发货记录</MenuItem> -->
              <MenuItem v-show="user_type==4 || user_type==3" name="/security/1-3/product_circulation_tracking">产品流通情况追踪</MenuItem>
             </Submenu>

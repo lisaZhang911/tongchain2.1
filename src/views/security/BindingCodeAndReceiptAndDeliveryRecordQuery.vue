@@ -10,13 +10,13 @@
     <div class="header" v-show="$store.getters.isPC">
           <!-- 条件搜索 -->
           <div class="searchParam" style="overflow:hidden" v-show="$store.getters.isPC">
-            <div class="optionBlock">
+            <div class="optionBlock" v-show="user_type!=1">
               <h3 style="margin:20px 0;font-weight:normal">代理商类别</h3>
               <Select v-model="queryOrder.agency_category" class="form_select">
                 <Option v-for="item in agentTypeList" :value="item.id" :key="item.id">{{ item.name }}</Option>
               </Select>
             </div>
-            <div class="optionBlock">
+            <div class="optionBlock" v-show="user_type!=1">
               <h3 style="margin:20px 0;font-weight:normal">代理商名称</h3>
               <Select v-model="queryOrder.agency_id" class="form_select">
                 <Option v-for="item in agentList" :value="item.id" :key="item.id">{{ item.authorization }}</Option>
@@ -107,6 +107,7 @@
         currentCode:'',
         currentOpType:-1,
         pageTotal: 0,
+        user_type:0,
         options: {
           disabledDate(date) {
             return date && date.valueOf() > Date.now()
@@ -429,15 +430,18 @@
     },
     mounted() {
       this.spin = true
+      this.user_type = localStorage.getItem('user_type')
 
       //移动端
       if(!this.$store.getters.isPC){
         this.columns_mob()
       }
-      //获取代理商类目
-      this.searchEnterpAgencyType()
-      //获取代理商名称
-      this.queryAgency_({per_page_num: 999999,page_idx: 1})
+      if(this.user_type!=1){
+        //获取代理商类目
+        this.searchEnterpAgencyType()
+        //获取代理商名称
+        this.queryAgency_({per_page_num: 999999,page_idx: 1})
+      }
       //获取产品
       this.searchPro({per_page_num:999999,page_idx:1})
       //获取码操作记录
