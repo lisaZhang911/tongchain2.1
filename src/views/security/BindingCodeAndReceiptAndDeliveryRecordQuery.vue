@@ -16,7 +16,7 @@
                 <Option v-for="item in agentTypeList" :value="item.id" :key="item.id">{{ item.name }}</Option>
               </Select>
             </div>
-            <div class="optionBlock" v-show="user_type!=1">
+            <div class="optionBlock">
               <h3 style="margin:20px 0;font-weight:normal">代理商名称</h3>
               <Select v-model="queryOrder.agency_id" class="form_select">
                 <Option v-for="item in agentList" :value="item.id" :key="item.id">{{ item.authorization }}</Option>
@@ -45,7 +45,7 @@
     <!-- 移动端-条件搜索 -->
     <div class="mob_searchParam" v-show="!$store.getters.isPC">
       <div class="filterBox" ref="filterBox" v-show="!$store.getters.isPC" :class="arrClass">
-        <div class="itemBox">
+        <div class="itemBox" v-show="user_type!=1">
           <h5>代理商类别</h5>
           <Select v-model="queryOrder.agency_category">
             <Option v-for="item in agentTypeList" :value="item.id" :key="item.id">{{ item.name }}</Option>
@@ -436,10 +436,12 @@
       if(!this.$store.getters.isPC){
         this.columns_mob()
       }
+      if(this.user_type!=1){
         //获取代理商类目
         this.searchEnterpAgencyType()
-        //获取代理商名称
-        this.queryAgency_({per_page_num: 999999,page_idx: 1})
+      }
+      //获取代理商名称
+      this.queryAgency_({per_page_num: 999999,page_idx: 1})
       //获取产品
       this.searchPro({per_page_num:999999,page_idx:1})
       //获取码操作记录
