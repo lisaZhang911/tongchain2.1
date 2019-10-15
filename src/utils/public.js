@@ -123,7 +123,7 @@ export default {
     return result
   },
   verifyCode: function(str){
-    var pattern = /^(A\d{15}\b)|(A\d{13}\b)$/
+    var pattern = /^([A-Z,0-9]{3})(\d{11}|\d{13})$/
     var result = pattern.test(str)
     return result
   },
