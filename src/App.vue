@@ -16,6 +16,9 @@ export default {
 </script>
 
 <style lang='less'>
+#autoCom /deep/ .ivu-auto-complete.ivu-select-dropdown{
+  max-height: 200px
+}
   /* *:not(.ivu-select-dropdown) {
     box-shadow: initial !important;
   } */

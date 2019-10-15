@@ -142,7 +142,7 @@ export default {
            render: (h, params) => {
              var picArr = params.row.pic[0]
              var host = this.host || 'http://315chain.oss-cn-shanghai.aliyuncs.com'
-             return h('img',{attrs:{src:`${host}/${picArr}`,style:"width:204px;height:136px"}})
+             return h('img',{attrs:{src:`${picArr}`,style:"width:204px;height:136px"}})
            }
          },{
           title:'事件类型',
@@ -376,7 +376,7 @@ export default {
     },
     handleSuccess(resp,file,fileL){
       this.tempPicArr.push(`${this.host}/${this.multipart_params.key}?time=${Date.parse(new Date())}`)
-      this.traceCatg.pic.push(`${this.multipart_params.key}`)
+      this.traceCatg.pic.push(`${this.host.split(':')[1]}/${this.multipart_params.key}`)
     },
     handledError(error,file,fileL){
       this.$Message.error(error)

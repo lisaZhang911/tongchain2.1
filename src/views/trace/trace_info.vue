@@ -212,7 +212,7 @@ export default {
                var picArr = params.row.pic[0]
                var host = this.host || 'http://315chain.oss-cn-shanghai.aliyuncs.com'
                if(picArr){
-                 return h('img',{attrs:{src:`${host}/${picArr}`,style:"width:204px;height:136px"}})
+                 return h('img',{attrs:{src:`${picArr}`,style:"width:204px;height:136px"}})
                }
              }
            }
@@ -552,7 +552,7 @@ export default {
       // }
       // console.log(file);
       this.tempPicArr.push(`${this.host}/${this.multipart_params.key}?time=${Date.parse(new Date())}`)
-      this.traceInfoItem.pic.push(`${this.multipart_params.key}`)
+      this.traceInfoItem.pic.push(`${this.host.split(':')[1]}/${this.multipart_params.key}`)
     },
     handledError(error,file,fileL){
       this.$Message.error(error)

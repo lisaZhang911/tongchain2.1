@@ -436,12 +436,10 @@
       if(!this.$store.getters.isPC){
         this.columns_mob()
       }
-      if(this.user_type!=1){
         //获取代理商类目
         this.searchEnterpAgencyType()
         //获取代理商名称
         this.queryAgency_({per_page_num: 999999,page_idx: 1})
-      }
       //获取产品
       this.searchPro({per_page_num:999999,page_idx:1})
       //获取码操作记录
